@@ -1,13 +1,15 @@
-var drawBlock = function(ctx, x, height, color, name, time) {
+'use strict';
+
+var drawBlock = function (ctx, x, height, color, name, time) {
   ctx.fillStyle = 'black';
   ctx.fillText(name, x, 265);
-  ctx.fillText(Math.round(time), x, 240-height);
+  ctx.fillText(Math.round(time), x, 240 - height);
 
   ctx.fillStyle = color;
   ctx.fillRect(x, 250 - height, 40, height);
 };
 
-var drawCloud = function(ctx) {
+var drawCloud = function (ctx) {
   ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
   ctx.fillRect(110, 20, 420, 270);
 
@@ -20,7 +22,7 @@ var drawCloud = function(ctx) {
   ctx.fillText('Список результатов:', 120, 60);
 };
 
-window.renderStatistics = function(ctx, names, times) {
+window.renderStatistics = function (ctx, names, times) {
   drawCloud(ctx);
 
   var maxTime = times[0];
@@ -31,8 +33,8 @@ window.renderStatistics = function(ctx, names, times) {
   }
 
   var shift = 130;
-  for (var i = 0; i < names.length; i++) {
-    var color = 'hsl(240, '+ (Math.floor(Math.random() * 101)) +'%, 50%)';
+  for (i = 0; i < names.length; i++) {
+    var color = 'hsl(240, ' + (Math.floor(Math.random() * 101)) + '%, 50%)';
     if (names[i] === 'Вы') {
       color = 'rgba(255, 0, 0, 1)';
     }
@@ -40,5 +42,3 @@ window.renderStatistics = function(ctx, names, times) {
     shift += 90;
   }
 };
-
-
