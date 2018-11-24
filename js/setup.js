@@ -16,7 +16,7 @@ var selectRandomItem = function (array) {
   return array[Math.floor(Math.random() * array.length)];
 };
 
-var createWizard = function () {
+var getRandomWizard = function () {
   return {
     name: selectRandomItem(WIZARD_NAMES) + ' ' + selectRandomItem(WIZARD_SURNAMES),
     coatColor: selectRandomItem(WIZARD_COATCOLORS),
@@ -24,10 +24,10 @@ var createWizard = function () {
   };
 };
 
-var createWizards = function (count) {
+var getWizardsList = function (count) {
   var wizards = [];
   for (var i = 0; i < count; i++) {
-    wizards[i] = createWizard();
+    wizards[i] = getRandomWizard();
   }
   return wizards;
 };
@@ -40,7 +40,7 @@ var renderWizard = function (wizard) {
   return wizardElement;
 };
 
-var renderWizards = function (wizards) {
+var renderWizardsList = function (wizards) {
   var fragment = document.createDocumentFragment();
   for (var i = 0; i < wizards.length; i++) {
     fragment.appendChild(renderWizard(wizards[i]));
@@ -49,7 +49,7 @@ var renderWizards = function (wizards) {
   similarListElement.appendChild(fragment);
 };
 
-var wizards = createWizards(4);
-renderWizards(wizards);
+var wizards = getWizardsList(4);
+renderWizardsList(wizards);
 
 setupSimilar.classList.remove('hidden');
