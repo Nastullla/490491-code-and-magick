@@ -3,12 +3,12 @@
 var setupDialogElement = document.querySelector('.setup');
 var dialogHandler = setupDialogElement.querySelector('.upload');
 
-dialogHandler.addEventListener('mousedown', function (evt) {
-  evt.preventDefault();
+dialogHandler.addEventListener('mousedown', function (downEvt) {
+  downEvt.preventDefault();
 
   var startCoords = {
-    x: evt.clientX,
-    y: evt.clientY
+    x: downEvt.clientX,
+    y: downEvt.clientY
   };
 
   var dragged = false;
@@ -40,7 +40,7 @@ dialogHandler.addEventListener('mousedown', function (evt) {
     if (dragged) {
       var onClickPreventDefault = function (evt) {
         evt.preventDefault();
-        dialogHandler.removeEventListener('click', onClickPreventDefault)
+        dialogHandler.removeEventListener('click', onClickPreventDefault);
       };
       dialogHandler.addEventListener('click', onClickPreventDefault);
     }

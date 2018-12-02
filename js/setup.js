@@ -68,7 +68,7 @@ var onPopupEscPress = function (evt) {
   }
 };
 
-var openPopup = function() {
+var openPopup = function () {
   setupWindow.style.top = '80px';
   setupWindow.style.left = '50%';
   setupWindow.classList.remove('hidden');
@@ -146,7 +146,7 @@ var changeElement = function (partWizard, input, array) {
   } else {
     partWizard.style.fill = randomColor;
   }
-}
+};
 
 wizardCoat.addEventListener('click', function () {
   changeElement(wizardCoat, inputCoatColor, WIZARD_COATCOLORS);
