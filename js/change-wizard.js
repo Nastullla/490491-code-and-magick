@@ -16,7 +16,7 @@
   var inputFireballColor = setup.querySelector('input[name="fireball-color"]');
 
   var changeElement = function (partWizard, input, array) {
-    var randomColor = window.util.selectRandomItem(array);
+    var randomColor = window.utils.selectRandomItem(array);
     input.value = randomColor;
     if (partWizard === setupFireballWrap) {
       partWizard.style.background = randomColor;

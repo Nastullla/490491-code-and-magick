@@ -7,7 +7,7 @@
   var setupClose = setup.querySelector('.setup-close');
 
   var onPopupEscPress = function (evt) {
-    if (evt.keyCode === window.util.keycode.esc && evt.target.name !== 'username') {
+    if (window.utils.isEscKey(evt) && evt.target.name !== 'username') {
       closePopup();
     }
   };
@@ -29,7 +29,7 @@
   });
 
   setupOpen.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === window.util.keycode.enter) {
+    if (window.utils.isEnterKey(evt)) {
       openPopup();
     }
   });
@@ -39,7 +39,7 @@
   });
 
   setupClose.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === window.util.keycode.enter) {
+    if (window.utils.isEnterKey(evt)) {
       closePopup();
     }
   });

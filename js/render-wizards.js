@@ -23,7 +23,7 @@
     SIMILAR_LIST_ELEMENT.appendChild(fragment);
   };
 
-  var wizards = window.getWizardsList(4);
+  var wizards = window.data.getWizardsList(4);
   renderWizardsList(wizards);
 
   setupSimilar.classList.remove('hidden');

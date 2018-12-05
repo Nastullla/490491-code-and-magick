@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-  var keycodes = {
+  var keyCodes = {
     esc: 27,
     enter: 13,
   };
@@ -10,9 +10,19 @@
     return array[Math.floor(Math.random() * array.length)];
   };
 
-  window.util = {
-    keycode: keycodes,
-    selectRandomItem: selectRandomItem
+  var isEscKey = function (evt) {
+    return evt.keyCode === keyCodes.esc;
+  };
+
+  var isEnterKey = function (evt) {
+    return evt.keyCode === keyCodes.enter;
+  };
+
+  window.utils = {
+    keyCode: keyCodes,
+    selectRandomItem: selectRandomItem,
+    isEscKey: isEscKey,
+    isEnterKey: isEnterKey
   };
 
 })();

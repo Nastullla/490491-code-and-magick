@@ -9,19 +9,23 @@
 
   var getRandomWizard = function () {
     return {
-      name: window.util.selectRandomItem(WIZARD_NAMES) + ' ' +
-            window.util.selectRandomItem(WIZARD_SURNAMES),
-      coatColor: window.util.selectRandomItem(WIZARD_COATCOLORS),
-      eyesColor: window.util.selectRandomItem(WIZARD_EYESCOLORS)
+      name: window.utils.selectRandomItem(WIZARD_NAMES) + ' ' +
+            window.utils.selectRandomItem(WIZARD_SURNAMES),
+      coatColor: window.utils.selectRandomItem(WIZARD_COATCOLORS),
+      eyesColor: window.utils.selectRandomItem(WIZARD_EYESCOLORS)
     };
   };
 
-  window.getWizardsList = function (count) {
+  var getWizardsList = function (count) {
     var wizards = [];
     for (var i = 0; i < count; i++) {
       wizards[i] = getRandomWizard();
     }
     return wizards;
+  };
+
+  window.data = {
+    getWizardsList: getWizardsList
   };
 
 })();
