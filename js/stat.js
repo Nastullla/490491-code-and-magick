@@ -24,7 +24,7 @@
     ctx.fillText('Список результатов:', 120, 60);
   };
 
-  window.renderStatistics = function (ctx, names, times) {
+  var renderStatistics = function (ctx, names, times) {
     drawCloud(ctx);
 
     var maxTime = times[0];
@@ -44,5 +44,9 @@
       shift += 90;
     }
   };
+
+  window.stat = {
+    renderStatistics: renderStatistics
+  }
 
 })();
