@@ -47,6 +47,6 @@
 
   window.stat = {
     renderStatistics: renderStatistics
-  }
+  };
 
 })();
