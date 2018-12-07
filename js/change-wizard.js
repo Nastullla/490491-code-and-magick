@@ -15,7 +15,6 @@
   var inputEyesColor = setup.querySelector('input[name="eyes-color"]');
   var inputFireballColor = setup.querySelector('input[name="fireball-color"]');
   var formWizard = setup.querySelector('.setup-wizard-form');
-  var buttonSave = formWizard.querySelector('.setup-submit');
 
   var changeElement = function (partWizard, input, array) {
     var randomColor = window.utils.selectRandomItem(array);

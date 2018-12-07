@@ -34,7 +34,7 @@
     }
   };
 
-  var load = function (onLoad, onError){
+  var load = function (onLoad, onError) {
     performRequest('https://js.dump.academy/code-and-magick/data', 'GET', onLoad, onError);
   };
 
