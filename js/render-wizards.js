@@ -9,23 +9,26 @@
   var renderWizard = function (wizard) {
     var wizardElement = SIMILAR_WIZARD_TEMPLATE.cloneNode(true);
     wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
-    wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
-    wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
+    wizardElement.querySelector('.wizard-coat').style.fill = wizard.colorCoat;
+    wizardElement.querySelector('.wizard-eyes').style.fill = wizard.colorEyes;
     return wizardElement;
   };
 
-  var renderWizardsList = function (wizards) {
+  var onSuccessLoad = function (wizards) {
+    window.utils.removeErrorMessage();
     var fragment = document.createDocumentFragment();
-    for (var i = 0; i < wizards.length; i++) {
-      fragment.appendChild(renderWizard(wizards[i]));
+    var j;
+
+    for (var i = 0; i < 4; i++) {
+      j = Math.floor(Math.random() * wizards.length);
+      fragment.appendChild(renderWizard(wizards[j]));
+      wizards.splice(j, 1);
     }
 
     SIMILAR_LIST_ELEMENT.appendChild(fragment);
+    setupSimilar.classList.remove('hidden');
   };
 
-  var wizards = window.data.getWizardsList(4);
-  renderWizardsList(wizards);
-
-  setupSimilar.classList.remove('hidden');
+  window.backend.load(onSuccessLoad, window.utils.onError);
 
 })();
