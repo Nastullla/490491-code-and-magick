@@ -42,9 +42,9 @@
     var errorMessageElement = document.querySelector('.error-message');
     if (!errorMessageElement) {
       createErrorMessage();
-    };
+    }
 
-    var errorMessageElement = document.querySelector('.error-message');
+    errorMessageElement = document.querySelector('.error-message');
     errorMessageElement.textContent = errorMessage;
     errorMessageElement.classList.remove('hidden');
   };
