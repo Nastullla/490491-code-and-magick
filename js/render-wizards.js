@@ -15,7 +15,7 @@
   };
 
   var onSuccessLoad = function (wizards) {
-    window.utils.removeErrorMessage();
+    window.utils.hideErrorMessage();
     var fragment = document.createDocumentFragment();
     var j;
 

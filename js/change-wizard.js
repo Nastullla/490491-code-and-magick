@@ -39,7 +39,7 @@
   });
 
   var onSuccessSave = function () {
-    window.utils.removeErrorMessage();
+    window.utils.hideErrorMessage();
     setup.classList.add('hidden');
   };
 
