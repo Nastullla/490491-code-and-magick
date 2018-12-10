@@ -18,11 +18,44 @@
     return evt.keyCode === keyCodes.enter;
   };
 
+  var hideErrorMessage = function () {
+    var errorMessageElement = document.querySelector('.error-message');
+    if (errorMessageElement) {
+      errorMessageElement.classList.add('hidden');
+    }
+  };
+
+  var createErrorMessage = function () {
+    var node = document.createElement('div');
+    node.classList.add('error-message');
+    node.classList.add('hidden');
+    node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
+    node.style.position = 'absolute';
+    node.style.left = 0;
+    node.style.right = 0;
+    node.style.fontSize = '30px';
+
+    document.body.insertAdjacentElement('afterbegin', node);
+  };
+
+  var onError = function (errorMessage) {
+    var errorMessageElement = document.querySelector('.error-message');
+    if (!errorMessageElement) {
+      createErrorMessage();
+    }
+
+    errorMessageElement = document.querySelector('.error-message');
+    errorMessageElement.textContent = errorMessage;
+    errorMessageElement.classList.remove('hidden');
+  };
+
   window.utils = {
     keyCode: keyCodes,
     selectRandomItem: selectRandomItem,
     isEscKey: isEscKey,
-    isEnterKey: isEnterKey
+    isEnterKey: isEnterKey,
+    onError: onError,
+    hideErrorMessage: hideErrorMessage
   };
 
 })();

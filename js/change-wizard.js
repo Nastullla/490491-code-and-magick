@@ -14,6 +14,7 @@
   var inputCoatColor = setup.querySelector('input[name="coat-color"]');
   var inputEyesColor = setup.querySelector('input[name="eyes-color"]');
   var inputFireballColor = setup.querySelector('input[name="fireball-color"]');
+  var formWizard = setup.querySelector('.setup-wizard-form');
 
   var changeElement = function (partWizard, input, array) {
     var randomColor = window.utils.selectRandomItem(array);
@@ -37,5 +38,14 @@
     changeElement(setupFireballWrap, inputFireballColor, FIREBALLCOLORS);
   });
 
+  var onSuccessSave = function () {
+    window.utils.hideErrorMessage();
+    setup.classList.add('hidden');
+  };
+
+  formWizard.addEventListener('submit', function (evt) {
+    window.backend.save(new FormData(formWizard), onSuccessSave, window.utils.onError);
+    evt.preventDefault();
+  });
 
 })();
