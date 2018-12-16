@@ -38,6 +38,6 @@
 
   window.sortWizards = {
     sortWizards: sortWizards
-  }
+  };
 
 })();
