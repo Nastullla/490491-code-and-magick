@@ -49,13 +49,30 @@
     errorMessageElement.classList.remove('hidden');
   };
 
+  var DEBOUNCE_INTERVAL = 500; // ms
+
+  var debounce = function (cb) {
+    var lastTimeout = null;
+
+    return function() {
+      var parameters = arguments;
+      if (lastTimeout) {
+        window.clearTimeout(lastTimeout);
+      }
+      lastTimeout = window.setTimeout(function() {
+        cb.apply(null, parameters);
+      }, DEBOUNCE_INTERVAL);
+    };
+  };
+
   window.utils = {
     keyCode: keyCodes,
     selectRandomItem: selectRandomItem,
     isEscKey: isEscKey,
     isEnterKey: isEnterKey,
     onError: onError,
-    hideErrorMessage: hideErrorMessage
+    hideErrorMessage: hideErrorMessage,
+    debounce: debounce
   };
 
 })();
