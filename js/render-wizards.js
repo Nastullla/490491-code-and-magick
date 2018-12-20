@@ -14,21 +14,27 @@
     return wizardElement;
   };
 
-  var onSuccessLoad = function (wizards) {
-    window.utils.hideErrorMessage();
-    var fragment = document.createDocumentFragment();
-    var j;
+  var renderWizards = function (wizards) {
+    var sortedWizards = window.sortWizards.sortWizards(wizards);
 
+    SIMILAR_LIST_ELEMENT.innerHTML = '';
     for (var i = 0; i < 4; i++) {
-      j = Math.floor(Math.random() * wizards.length);
-      fragment.appendChild(renderWizard(wizards[j]));
-      wizards.splice(j, 1);
+      SIMILAR_LIST_ELEMENT.appendChild(renderWizard(sortedWizards[i]));
     }
 
-    SIMILAR_LIST_ELEMENT.appendChild(fragment);
     setupSimilar.classList.remove('hidden');
   };
 
+  var onSuccessLoad = function (wizards) {
+    window.renderWizards.dataWizards = wizards;
+    window.utils.hideErrorMessage();
+    renderWizards(wizards);
+  };
+
   window.backend.load(onSuccessLoad, window.utils.onError);
+
+  window.renderWizards = {
+    renderWizards: renderWizards
+  };
 
 })();

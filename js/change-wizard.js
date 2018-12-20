@@ -16,6 +16,7 @@
   var inputFireballColor = setup.querySelector('input[name="fireball-color"]');
   var formWizard = setup.querySelector('.setup-wizard-form');
 
+
   var changeElement = function (partWizard, input, array) {
     var randomColor = window.utils.selectRandomItem(array);
     input.value = randomColor;
@@ -24,15 +25,23 @@
     } else {
       partWizard.style.fill = randomColor;
     }
+    return randomColor;
   };
 
-  wizardCoat.addEventListener('click', function () {
-    changeElement(wizardCoat, inputCoatColor, WIZARD_COATCOLORS);
-  });
+  var debounceRenderWizard = window.utils.debounce(window.renderWizards.renderWizards);
 
-  wizardEyes.addEventListener('click', function () {
-    changeElement(wizardEyes, inputEyesColor, WIZARD_EYESCOLORS);
-  });
+  var onCoatChange = function () {
+    window.changeWizard.currentCoatColor = changeElement(wizardCoat, inputCoatColor, WIZARD_COATCOLORS);
+    debounceRenderWizard(window.renderWizards.dataWizards);
+  };
+
+  var onEyesChange = function () {
+    window.changeWizard.currentEyesColor = changeElement(wizardEyes, inputEyesColor, WIZARD_EYESCOLORS);
+    debounceRenderWizard(window.renderWizards.dataWizards);
+  };
+
+  wizardCoat.addEventListener('click', onCoatChange);
+  wizardEyes.addEventListener('click', onEyesChange);
 
   setupFireballWrap.addEventListener('click', function () {
     changeElement(setupFireballWrap, inputFireballColor, FIREBALLCOLORS);
@@ -47,5 +56,10 @@
     window.backend.save(new FormData(formWizard), onSuccessSave, window.utils.onError);
     evt.preventDefault();
   });
+
+  window.changeWizard = {
+    currentCoatColor: 'rgb(101, 137, 164)',
+    currentEyesColor: 'black'
+  };
 
 })();
